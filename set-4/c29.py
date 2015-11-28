@@ -17,7 +17,6 @@ class sha1ext(c28.sha1):
         # 按照给定的格式(>IIIII)解析字节流string，返回解析出来的tuple
         hs = struct.unpack(">IIIII", orghash.decode('hex'))
 
-        print "初始信息信息分组:" + str(hs)
 
         #更改加密算法的初始值
         self.h0 = hs[0]
