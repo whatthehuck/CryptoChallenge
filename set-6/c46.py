@@ -2,10 +2,18 @@
 #!/usr/bin/env python
 
 from rsa import RSA
-from i2s import i2s, s2i
 import base64
 import math
 from decimal import *
+
+def i2s(i):
+  x = hex(i).replace("0x","").replace("L","")
+  if len(x) % 2 == 1:
+    x = "0" + x
+  return x.decode('hex')
+
+def s2i(s):
+  return int(s.encode('hex'),16)
 
 
 class oracle:
@@ -25,12 +33,14 @@ def attack(enc, key, isEven):
 	e = key[0]
 	n = key[1] #去 从公钥中去值
 
-	m1 = s2i(enc[0])  #将加密信息的第一位转成整数
+	m1 = s2i(enc[0])  #将加密信息转成整数
+	print m1
 	m2 = pow(2, e, n)   # (2**e)%n)
 	m1 = (m1 * m2) % n
 	limit = int(math.log(n, 2)) + 1
 	getcontext().prec = limit
 
+	#设置变量精度
 	a = Decimal(0)
 	b = Decimal(n)
 	for x in range(limit):

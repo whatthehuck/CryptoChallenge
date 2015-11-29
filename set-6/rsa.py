@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import Crypto.Util.number
-from c36 import i2s, s2i
 
 '''
 https://en.wikipedia.org/wiki/Modular_multiplicative_inverse
@@ -9,6 +8,15 @@ https://en.wikibooks.org/wiki/Algorithm_Implementation/Mathematics/Extended_Eucl
 https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm
 https://en.wikipedia.org/wiki/RSA_%28algorithm%29
 '''
+
+def i2s(i):
+  x = hex(i).replace("0x","").replace("L","")
+  if len(x) % 2 == 1:
+    x = "0" + x
+  return x.decode('hex')
+
+def s2i(s):
+  return int(s.encode('hex'),16)
 
 def egcd(a, b):
   '''
