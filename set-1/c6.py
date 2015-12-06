@@ -1,4 +1,4 @@
-def lfet(cc): # letter frequency for english test
+def lfet(cc): # letter frequency for english tes
     lfe = { "e": 12,"t": 9,"a": 8,"o": 7,"h": 6,"i": 6,"n": 6,"s": 6,"r": 5,"d": 4,"l": 4,"c": 2,"f": 2,"g": 2,"m": 2,"u": 2,"w": 2,"b": 1,"p": 1,"y": 1 }
     count = 0
     for c in lfe:
